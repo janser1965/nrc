@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=RustDesk
+Name=NRC Nexus Remote Control
 GenericName=Remote Desktop
 Comment=Remote Desktop
 Exec=rustdesk %u
