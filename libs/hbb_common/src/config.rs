@@ -74,7 +74,10 @@ lazy_static::lazy_static! {
     static ref USER_DEFAULT_CONFIG: RwLock<(UserDefaultConfig, Instant)> = RwLock::new((UserDefaultConfig::load(), Instant::now()));
     pub static ref NEW_STORED_PEER_CONFIG: Mutex<HashSet<String>> = Default::default();
     pub static ref DEFAULT_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
-    pub static ref OVERWRITE_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
+    // NRC: WebSocket sempre ligado (o hbbs open source nao inicia a troca de chaves no TCP)
+    pub static ref OVERWRITE_SETTINGS: RwLock<HashMap<String, String>> = RwLock::new(HashMap::from([
+        ("allow-websocket".to_owned(), "Y".to_owned()),
+    ]));
     pub static ref DEFAULT_DISPLAY_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
     pub static ref OVERWRITE_DISPLAY_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
     pub static ref DEFAULT_LOCAL_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
