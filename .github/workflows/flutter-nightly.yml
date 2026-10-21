@@ -9,4 +9,4 @@ jobs:
     secrets: inherit
     with:
       upload-artifact: true
-      upload-tag: "nrc-v3"
+      upload-tag: "nrc-v4"
