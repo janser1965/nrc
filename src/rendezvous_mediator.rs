@@ -660,7 +660,8 @@ impl RendezvousMediator {
         //If the investment agent type is http or https, then tcp forwarding is enabled.
         if (cfg!(debug_assertions) && option_env!("TEST_TCP").is_some())
             || Config::is_proxy()
-            || use_ws()
+            // NRC: com WebSocket ligado o registro continua por UDP (o hbbs open source
+            // responde NOT_SUPPORT ao register_pk por TCP/WebSocket); o WebSocket fica so para conectar.
             || crate::is_udp_disabled()
         {
             Self::start_tcp(server, host).await
